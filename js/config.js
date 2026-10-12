@@ -1,7 +1,7 @@
 /* ==========================================================================
-   Tarven Group — Site configuration
+   Larisel Group — Site configuration
    --------------------------------------------------------------------------
-   DEMONSTRATION SITE. Tarven Group is a fictional holding invented for this
+   DEMONSTRATION SITE. Larisel Group is a fictional holding invented for this
    portfolio piece. Every company name, project name, place name and contact
    detail below is made up, and the phone numbers sit in ranges that are not
    assigned to subscribers — nothing here can ring a real person.
@@ -13,9 +13,9 @@
 
 export const SITE = {
   /* Public base URL — used for canonical links and Open Graph tags. */
-  baseUrl: "https://stillbenn.github.io/tarven-group/",
+  baseUrl: "https://larisel.com/larisel-group/",
 
-  legalName: "Tarven Group", // fictional holding, invented for this demo
+  legalName: "Larisel Group", // fictional holding, invented for this demo
   city: "", // left blank on purpose — the demo names no real location
   country: "Türkiye",
 
@@ -27,8 +27,8 @@ export const SITE = {
   whatsappDisplay: "+90 500 000 00 00",
   whatsappHref: "https://wa.me/905000000000",
 
-  emailDisplay: "info@tarvengroup.com",
-  emailHref: "mailto:info@tarvengroup.com",
+  emailDisplay: "studio@larisel.com",
+  emailHref: "mailto:studio@larisel.com",
 
   hours: "Her gün · 09.00 – 17.00",
 };

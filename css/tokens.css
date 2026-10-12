@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tarven Group — Design tokens
+   Larisel Group — Design tokens
    --------------------------------------------------------------------------
    Direction: paper, not screen. A light warm ground, near-black ink, a serif
    display face and restrained type sizes. Premium here comes from space,
@@ -27,13 +27,13 @@
   /* --- Accents ---------------------------------------------------------
      Used sparingly: rules, indices, hover states. Never as a fill.        */
   --c-brand: #8a5f2b; /* aged bronze — the holding */
-  /* Sector accents matched to the sub-brand logos: Tarven Park (market) is a
-     warm terracotta from its flame mark, Tarven İnşaat is its brand blue, Tarven
+  /* Sector accents matched to the sub-brand logos: Larisel Park (market) is a
+     warm terracotta from its flame mark, Larisel İnşaat is its brand blue, Larisel
      Enerji its brand green. Each is deepened from the logo's own colour just
      enough to stay readable as an accent on the light paper ground. */
-  --c-market: #964d15; /* terracotta — Tarven Park (deepened to clear AA on paper) */
-  --c-insaat: #0a5f97; /* brand blue — Tarven İnşaat (deepened to clear AA) */
-  --c-petrol: #3f6717; /* brand green — Tarven Enerji, var name kept (deepened to clear AA) */
+  --c-market: #964d15; /* terracotta — Larisel Park (deepened to clear AA on paper) */
+  --c-insaat: #0a5f97; /* brand blue — Larisel İnşaat (deepened to clear AA) */
+  --c-petrol: #3f6717; /* brand green — Larisel Enerji, var name kept (deepened to clear AA) */
 
   /* Set per page via <body data-sector="market|insaat|enerji"> */
   --c-accent: var(--c-brand);

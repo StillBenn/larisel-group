@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /mrd-group/panel/
+Disallow: /larisel-group/panel/
 
-Sitemap: https://stillbenn.github.io/mrd-group/sitemap.xml
+Sitemap: https://larisel.com/larisel-group/sitemap.xml

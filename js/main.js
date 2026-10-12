@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tarven Group — Front-end orchestration
+   Larisel Group — Front-end orchestration
    --------------------------------------------------------------------------
    Everything that needs a frame runs inside ONE ticker, in a fixed order:
 
@@ -485,10 +485,10 @@ function initBuildingFrame() {
    -------------------------------------------------------------------------- */
 function initWhatsappPrefill() {
   const messages = {
-    market: "Merhaba, Tarven Park hakkında bilgi almak istiyorum.",
-    insaat: "Merhaba, Tarven İnşaat projeleri hakkında bilgi almak istiyorum.",
-    enerji: "Merhaba, Tarven Enerji hakkında bilgi almak istiyorum.",
-    "": "Merhaba, Tarven Group hakkında bilgi almak istiyorum.",
+    market: "Merhaba, Larisel Park hakkında bilgi almak istiyorum.",
+    insaat: "Merhaba, Larisel İnşaat projeleri hakkında bilgi almak istiyorum.",
+    enerji: "Merhaba, Larisel Enerji hakkında bilgi almak istiyorum.",
+    "": "Merhaba, Larisel Group hakkında bilgi almak istiyorum.",
   };
   const text = messages[document.body.dataset.sector || ""] || messages[""];
   const q = "text=" + encodeURIComponent(text);
@@ -531,7 +531,7 @@ function initPageTransitions() {
   wipe.setAttribute("aria-hidden", "true");
   const mark = document.createElement("img");
   mark.className = "page-wipe__logo";
-  mark.src = "./img/tarven-group.png";
+  mark.src = "./img/larisel-group.png";
   mark.alt = "";
   wipe.appendChild(mark);
   document.body.appendChild(wipe);
@@ -640,10 +640,10 @@ function initCarousel() {
   const roots = $$("[data-carousel]");
   if (!roots.length) return;
   const sector = document.body.dataset.sector || "";
-  const label = sector === "market" ? "Tarven Park" : sector === "insaat" ? "Proje" : "Görsel";
+  const label = sector === "market" ? "Larisel Park" : sector === "insaat" ? "Proje" : "Görsel";
   let custom = [];
   try {
-    custom = JSON.parse(localStorage.getItem("mrd.gallery." + sector) || "[]");
+    custom = JSON.parse(localStorage.getItem("larisel.gallery." + sector) || "[]");
   } catch (e) {
     custom = [];
   }
@@ -651,7 +651,7 @@ function initCarousel() {
     (d) => typeof d === "string" && d.startsWith("data:image")
   );
 
-  /* Market ships the client's own REAL Tarven Park photos (6); construction and
+  /* Market ships the client's own REAL Larisel Park photos (6); construction and
      energy still use the 12 sample placeholders until their real photos arrive. */
   const SHIPPED = { market: 6 };
   const shippedCount = SHIPPED[sector] || 12;
@@ -662,8 +662,8 @@ function initCarousel() {
   const CAPTIONS = {
     market: [
       "Açık hava çarşısı",
-      "Tarven Park — dış cephe",
-      "Gün batımında Tarven Park",
+      "Larisel Park — dış cephe",
+      "Gün batımında Larisel Park",
       "Gece promenadı",
       "Play Park — çocuk eğlence alanı",
       "İç mekân — yeme, içme ve sosyal alan",

@@ -1,10 +1,12 @@
-# MRD Group — corporate website
+# Larisel Group — corporate website
 
-Static marketing site for MRD Group, a group operating in three sectors:
-retail/market, construction, and energy.
+Static marketing site for Larisel Group, a fictional group operating in three
+sectors: retail/market, construction, and energy. A Larisel portfolio piece.
 
-**Status:** demo build. Company details, photography and logo are placeholders
-pending client input — see [Placeholder content](#placeholder-content).
+**Live:** https://larisel.com/larisel-group/
+
+**Status:** demo build. The company, its contact details and its projects are
+invented for this demo — see [Placeholder content](#placeholder-content).
 
 ## Stack
 
@@ -108,10 +110,10 @@ fonts/              Self-hosted woff2 files
 
 ## Admin panel (demo)
 
-`panel/index.html` is a standalone tool reachable at `…/mrd-group/panel/`. It
+`panel/index.html` is a standalone tool reachable at `…/larisel-group/panel/`. It
 lets an editor add gallery images per sector (market / inşaat / enerji). In this
 demo the images are downscaled and stored in the browser's `localStorage`
-(`mrd.gallery.<sector>`); `initCarousel()` in `js/main.js` reads that key on load
+(`larisel.gallery.<sector>`); `initCarousel()` in `js/main.js` reads that key on load
 and puts the uploads at the front of the gallery.
 
 Uploads are **added**, never substituted: an editor who adds ten photos sees all
@@ -128,7 +130,7 @@ in place; only the storage read/write layer changes.
 
 ## Path convention
 
-The site is published in a **sub-directory** (`https://<user>.github.io/mrd-group/`),
+The site is published in a **sub-directory** (`https://larisel.com/larisel-group/`),
 so every asset reference is relative and starts with `./`. A leading `/` would
 resolve against the domain root and break every stylesheet, script and image in
 production.
@@ -164,8 +166,8 @@ If a custom domain is added later, update in this order:
 
 ## Gallery photos
 
-`img/gallery/market-01…06.jpg` are the company's **own photos** of Cizre Park
-Alışveriş ve Yaşam Merkezi. `img/gallery/insaat-*` and `img/gallery/enerji-*`
+`img/gallery/market-01…06.jpg` are photos of the real shopping centre whose
+figures Larisel Park borrows. `img/gallery/insaat-*` and `img/gallery/enerji-*`
 are self-hosted **sample** photos (construction / solar) from Unsplash under the
 Unsplash License (free commercial use, no attribution required) — placeholders
 until the company's own construction and energy photos arrive (via the `/panel`
@@ -180,12 +182,12 @@ data was available.
 
 Confirmed and live:
 
-- **Contact** — phone `444 89 73`, hours `10.00 – 22.00`, e-mail
-  `info@mrdgroup.com.tr`, all in `js/config.js` and mirrored as static HTML
-  fallback text. Update both.
-- **Flagship project** — Cizre Park Alışveriş ve Yaşam Merkezi: opened 2020,
-  ~16.500 m², 26 stores, 128 residences, 5 cinema screens, 2.000 m² play area.
-  These are the only figures the homepage states.
+- **Contact** — invented phone numbers in unassigned ranges and the studio's
+  address `studio@larisel.com`, all in `js/config.js` and mirrored as static
+  HTML fallback text. Update both.
+- **Flagship project** — Larisel Park, a shopping and living centre whose
+  figures (stores, residences, cinema screens, play area) are adapted from a
+  real centre. These are the only figures the homepage states.
 
 Still provisional:
 
@@ -195,8 +197,8 @@ Still provisional:
 - **Sector artwork** — `img/sectors/market.jpg` is the company's own photo;
   `insaat.jpg` and `enerji.jpg` are Unsplash samples until real ones arrive.
 - **Construction / energy photography** — see [Gallery photos](#gallery-photos).
-- **Map** — the embed points at Cizre with an approximate marker, and is
-  labelled as approximate; replace with exact coordinates when supplied.
+- **Map** — the embed shows an approximate location and is labelled as
+  approximate; replace with exact coordinates when supplied.
 
 ## Accessibility and motion
 
@@ -211,4 +213,4 @@ Still provisional:
 
 Fonts: SIL Open Font License 1.1 (Newsreader, Inter).
 GSAP and Lenis: see their respective licences.
-Site content and artwork: © MRD Group.
+Site content and artwork: © Larisel.
