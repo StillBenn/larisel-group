@@ -1355,7 +1355,9 @@ body.has-cursor .map-frame * {
 /* Endless coverflow: every slide is absolutely positioned and placed by
    initCarousel() from its wrapped distance to the centre, so the loop never
    dead-ends and both neighbours are always present. JS owns transform /
-   opacity / z-index; CSS owns the blur and the active shadow. */
+   opacity / z-index; CSS owns the active shadow, and the neighbours' blur is
+   a picture drawn once (.carousel__soft, soften() in main.js) — a live
+   filter re-blurred them on every scroll frame. */
 .carousel__track {
   position: relative;
   height: calc(clamp(16rem, 44vw, 34rem) * 0.625 + 3rem);
@@ -1374,15 +1376,22 @@ body.has-cursor .map-frame * {
   display: grid;
   place-content: center;
   color: var(--c-ink-faint);
-  filter: blur(5px);
   transform: translate(-50%, -50%);
   /* will-change is set per-slide by initCarousel(): only the three on-stage
      slides get a GPU layer, the rest release theirs. */
   transition: transform 0.7s var(--e-out), opacity 0.7s var(--e-out),
-    filter 0.7s var(--e-out), box-shadow 0.7s var(--e-out);
+    box-shadow 0.7s var(--e-out);
 }
+.carousel__soft {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.7s var(--e-out);
+}
+.carousel__slide.is-active .carousel__soft { opacity: 0; }
 .carousel__slide.is-active {
-  filter: none;
   cursor: zoom-in;
   box-shadow: 0 30px 64px -34px rgba(18, 18, 15, 0.5);
 }

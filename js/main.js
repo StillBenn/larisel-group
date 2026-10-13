@@ -636,6 +636,37 @@ function initCountUp() {
    Real photos come from the admin panel (localStorage per sector) and take the
    leading slots; the rest stay as placeholders until filled.
    -------------------------------------------------------------------------- */
+/* The neighbours' blur, drawn ONCE per photo into a small canvas laid over it.
+   A live CSS filter: blur() on the two neighbours was re-filtered by the GPU
+   on every frame of a scroll — measured on the market page at 300 Hz: 207
+   frames dropped in a scroll, 71 with the filters off. A blurred picture
+   needs no detail, so a small copy stretched to the slide is enough; where
+   the 2D canvas has no filter (older Safari), shrinking it further and
+   letting the browser stretch it back gives the same softness. */
+function soften(img, slide) {
+  try {
+    const w = 240, h = Math.max(1, Math.round((w * img.naturalHeight) / img.naturalWidth));
+    const c = document.createElement("canvas");
+    c.width = w; c.height = h;
+    c.className = "carousel__soft";
+    c.setAttribute("aria-hidden", "true");
+    const g = c.getContext("2d");
+    if ("filter" in g) {
+      g.filter = "blur(2.2px)";
+      g.drawImage(img, -6, -6, w + 12, h + 12);      // over-drawn: the blur does not fade in from the edges
+    } else {
+      const t = document.createElement("canvas");
+      t.width = 48; t.height = Math.max(1, Math.round((48 * h) / w));
+      t.getContext("2d").drawImage(img, 0, 0, t.width, t.height);
+      g.imageSmoothingQuality = "high";
+      g.drawImage(t, 0, 0, w, h);
+    }
+    slide.appendChild(c);
+  } catch (e) {
+    /* a photo from another origin cannot be read back: it stays sharp */
+  }
+}
+
 function initCarousel() {
   const roots = $$("[data-carousel]");
   if (!roots.length) return;
@@ -706,9 +737,14 @@ function initCarousel() {
       img.decoding = "async";
       /* Resolve from soft over-scan once decoded, so real photos feel placed
          rather than popped (CSS owns the transition). */
-      img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+      const loaded = () => {
+        if (img.classList.contains("is-loaded")) return;
+        img.classList.add("is-loaded");
+        soften(img, slide);
+      };
+      img.addEventListener("load", loaded, { once: true });
       img.src = item.src;
-      if (img.complete && img.naturalWidth) img.classList.add("is-loaded");
+      if (img.complete && img.naturalWidth) loaded();
       slide.appendChild(img);
       track.appendChild(slide);
     });
@@ -771,9 +807,8 @@ function initCarousel() {
         s.style.opacity = near ? (d === 0 ? "1" : "0.55") : "0";
         s.style.zIndex = String(20 - abs);
         s.style.pointerEvents = near ? "auto" : "none";
-        /* Off-stage slides drop their blur and their GPU layer. Leaving a dozen
-           blurred, promoted layers alive costs real frames while scrolling. */
-        s.style.filter = near ? "" : "none";
+        /* Off-stage slides drop their GPU layer. Leaving a dozen promoted
+           layers alive costs real frames while scrolling. */
         s.style.willChange = near ? "transform, opacity" : "auto";
         s.classList.toggle("is-active", d === 0);
       });
