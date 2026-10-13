@@ -16,8 +16,7 @@ export const SITE = {
   baseUrl: "https://larisel.com/larisel-group/",
 
   legalName: "Larisel Group", // fictional holding, invented for this demo
-  city: "", // left blank on purpose — the demo names no real location
-  country: "Türkiye",
+  // no city or country on purpose — the group names no location
 
   /* Invented numbers. 0212 000 and 500 000 are not assigned to subscribers,
      so a visitor who taps them reaches nobody. */
